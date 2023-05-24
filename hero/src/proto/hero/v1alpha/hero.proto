@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package hero.v1alpha;
+
+service HeroService {
+    rpc GetHero (GetHeroRequest) returns (GetHeroResponse);
+    rpc CreateHero (CreateHeroRequest) returns (CreateHeroResponse);
+    rpc DeleteHero (DelteHeroRequest) returns (DelteHeroResponse);
+    rpc PutHero (PutHeroRequest) returns (PutHeroResponse);
+    rpc AttackHero (AttackHeroRequest) returns (AttackHeroResponse);
+}
+
+message GetHeroRequest {
+    int32 id = 1;
+}
+
+message GetAllHeroesResponse {
+   repeated Hero heroes = 1;
+}
+
+message GetHeroResponse {
+    Hero hero = 1;
+}
+
+message CreateHeroRequest {
+    string name = 1;
+    int32 power = 2;
+}
+
+message Hero {
+    int32 id = 1;
+    string name = 2;
+    int32 power = 3;
+    int32 hp = 4;
+}
+message CreateHeroResponse {
+    Hero hero = 1;
+}
+
+message DelteHeroRequest {
+    int32 id = 1;
+}
+
+message DelteHeroResponse {
+    string message = 1;
+}
+
+message PutHeroRequest {
+    int32 id = 1;
+    string name = 2;
+    int32 power = 3;
+    int32 hp = 4;
+}
+
+message PutHeroResponse {
+    Hero hero = 1;
+}
+
+message AttackHeroRequest {
+    int32 strikerId = 1;
+    int32 defenderId = 2;
+}
+
+message AttackHeroResponse {
+    Hero defender = 1;
+    Hero striker = 2;
+}
